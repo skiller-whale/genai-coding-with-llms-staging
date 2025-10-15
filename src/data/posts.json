@@ -1,0 +1,32 @@
+[
+    {
+        "user": "user1",
+        "title": "Post Title 1",
+        "text": "This is the text for post 1."
+    },
+    {
+        "user": "user2",
+        "title": "Post Title 2",
+        "text": "This is the text for post 2."
+    },
+    {
+        "user": "user3",
+        "title": "Post Title 3",
+        "text": "This is the text for post 3."
+    },
+    {
+        "user": "user4",
+        "title": "Post Title 4",
+        "text": "This is the text for post 4."
+    },
+    {
+        "user": "user5",
+        "title": "Post Title 5",
+        "text": "This is the text for post 5."
+    },
+    {
+        "user": "user6",
+        "title": "Post Title 6",
+        "text": "This is the text for post 6."
+    }
+]
