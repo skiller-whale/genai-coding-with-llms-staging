@@ -1,0 +1,16 @@
+{% for post in posts %}
+<div class="post">
+    <h3>{{ post.title }}</h3>
+    <p><strong>{{ post.user }}</strong></p>
+    <p>{{ post.text }}</p>
+</div>
+{% endfor %}
+
+<div class="load-more" id="posts-replace">
+    <button class="btn primary"
+        hx-get="/api/posts?page={{ page }}"
+        hx-target="#posts-replace"
+        hx-swap="outerHTML">
+        Load More...
+    </button>
+</div>
