@@ -1,4 +1,4 @@
-# Exercises for GenAI - Coding With Agents
+# Exercises for GenAI - Coding With LLMs/Agents
 
 This repo includes exercises to accompany Skiller Whale sessions on Generative AI.
 
