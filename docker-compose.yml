@@ -29,4 +29,11 @@ services:
     image: "ghcr.io/skiller-whale/continue-session-sync-filter:0.0.2"
     volumes:
       - /home/learner/.continue/sessions:/sessions_raw
-      - /home/learner/genai-coding-with-agents/.chat_history:/sessions_filtered
+      - /home/learner/genai-coding-with-llms/.chat_history:/sessions_filtered
+  indexing_provider:
+    build: .codebase_indexing
+    volumes:
+      - ./src:/codebase
+      - ./attendance_id:/app/sync/attendance_id
+    ports:
+      - "5003:5001"

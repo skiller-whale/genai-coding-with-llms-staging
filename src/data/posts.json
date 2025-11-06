@@ -28,5 +28,20 @@
         "user": "user6",
         "title": "Post Title 6",
         "text": "This is the text for post 6."
+    },
+    {
+        "user": "user7",
+        "title": "Post Title 7",
+        "text": "This is the text for post 7."
+    },
+    {
+        "user": "user8",
+        "title": "Post Title 8",
+        "text": "This is the text for post 8."
+    },
+    {
+        "user": "user9",
+        "title": "Post Title 9",
+        "text": "This is the text for post 9."
     }
 ]
