@@ -1,36 +1,17 @@
 services:
   sync:
-    profiles: ["skiller-whale"]
-    image: "ghcr.io/skiller-whale/learnersync:0.2.6"
+    image: "ghcr.io/skiller-whale/learnersync:0.2.7-alpha.1"
     network_mode: "host"
     environment:
       SERVER_URL: https://train.skillerwhale.com
       SW_RUNNING_IN_HOSTED_ENV:
       WATCHER_BASE_PATH: "/app"
       ATTENDANCE_ID_FILE: "/app/sync/attendance_id"
-      WATCHED_EXTS: ".py .yaml .json .css .html .md .chat"
-      IGNORE_MATCH: ".git"
+      WATCHED_EXTS: ".py .yaml .json .css .html .md .chat .claudelog"
+      IGNORE_MATCH: ".git node_modules"
     volumes:
-      - .:/app/exercises
-      - ./.continue/chat_history:/app/chat_history
+      - .:/app/code
       - ./attendance_id:/app/sync/attendance_id
+      - /home/learner/.claude/history.jsonl:/app/.claudelog
     tty: true
     stdin_open: true
-  continue_session_sync_filter:
-    profiles: ["skiller-whale"]
-    image: "ghcr.io/skiller-whale/continue-session-sync-filter:0.0.2"
-    volumes:
-      - /home/learner/.continue/sessions:/sessions_raw
-      - ./.continue/chat_history:/sessions_filtered
-  indexing_provider:
-    profiles: ["skiller-whale"]
-    build: ./.continue/codebase_indexing
-    volumes:
-      - ./src:/codebase/src:ro
-      - ./docs:/codebase/docs:ro
-      - ./tests:/codebase/tests:ro
-      - ./samples:/codebase/samples:ro
-      - ./README.md:/codebase/README.md:ro
-      - ./attendance_id:/app/sync/attendance_id
-    ports:
-      - "5001:5001"
