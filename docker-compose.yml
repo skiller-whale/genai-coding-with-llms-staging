@@ -1,17 +1,19 @@
 services:
   sync:
-    image: "ghcr.io/skiller-whale/learnersync:0.2.7-alpha.1"
+    image: "ghcr.io/skiller-whale/learnersync:0.2.7"
     network_mode: "host"
     environment:
       SERVER_URL: https://train.skillerwhale.com
       SW_RUNNING_IN_HOSTED_ENV:
       WATCHER_BASE_PATH: "/app"
       ATTENDANCE_ID_FILE: "/app/sync/attendance_id"
-      WATCHED_EXTS: ".py .yaml .json .css .html .md .chat .claudelog"
+      WATCHED_EXTS: ".py .yaml .json .css .html .md .chat .jsonl"
       IGNORE_MATCH: ".git node_modules"
     volumes:
       - .:/app/code
       - ./attendance_id:/app/sync/attendance_id
+      - /home/learner/.claude/projects:/app/claude/
       - /home/learner/.claude/history.jsonl:/app/.claudelog
     tty: true
     stdin_open: true
+
