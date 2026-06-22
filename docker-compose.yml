@@ -7,13 +7,17 @@ services:
       SW_RUNNING_IN_HOSTED_ENV:
       WATCHER_BASE_PATH: "/app"
       ATTENDANCE_ID_FILE: "/app/sync/attendance_id"
-      WATCHED_EXTS: ".py .yaml .json .css .html .md .chat .jsonl"
+      WATCHED_EXTS: ".py .yaml .json .css .html .md .chat"
       IGNORE_MATCH: ".git node_modules"
     volumes:
       - .:/app/code
+      - ./.chat_history:/app/chat_history
       - ./attendance_id:/app/sync/attendance_id
-      - /home/learner/.claude/projects:/app/claude/
-      - /home/learner/.claude/history.jsonl:/app/.claudelog
     tty: true
     stdin_open: true
+  claude_session_sync_filter:
+      image: "ghcr.io/skiller-whale/claude-session-sync-filter:0.0.2"
+      volumes:
+        - ~/.claude/projects:/sessions_raw:ro
+        - ./.chat_history:/sessions_filtered
 
