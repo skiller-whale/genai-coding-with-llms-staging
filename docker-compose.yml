@@ -16,8 +16,7 @@ services:
     tty: true
     stdin_open: true
   claude_session_sync_filter:
-      image: "ghcr.io/skiller-whale/claude-session-sync-filter:0.0.2"
-      volumes:
-        - ~/.claude/projects:/sessions_raw:ro
-        - ./.chat_history:/sessions_filtered
-
+    image: "ghcr.io/skiller-whale/claude-session-sync-filter:0.0.2"
+    volumes:
+      - /home/learner/.claude/projects:/sessions_raw:ro
+      - ./.chat_history:/sessions_filtered
